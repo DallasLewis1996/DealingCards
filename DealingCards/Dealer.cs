@@ -48,6 +48,7 @@ namespace DealingCards
         public void MenuSelection()
         {
             List<string> list = new List<string>();
+
             list.Add("Print the Deck");
             list.Add("Shuffle the Deck");
             list.Add("Deal Cards");
@@ -55,6 +56,7 @@ namespace DealingCards
             list.Add("Print the Players");
             list.Add("Set the new Players");
 
+            Console.WriteLine();
             int selection = CSC160_ConsoleMenu.CIO.PromptForMenuSelection(list,true);
 
             switch (selection)
@@ -84,17 +86,37 @@ namespace DealingCards
 
         public void ShuffleTheDeck()
         {
+            foreach(Player p in Players)
+            {
+                p.hand = null;
+            }
             deck.Shuffle();
             MenuSelection();
         }
         
         public void DealCards()
         {
-            foreach(Player p in Players)
+            int numOfCards = 0;
+            bool tryAgain = false;
+            Console.Write("How many cards would you like dealt?: ");
+            string input = Console.ReadLine();
+            do
             {
-                p.hand = deck.dealCards();
-            }
-            MenuSelection();
+                try
+                {
+                    numOfCards = int.Parse(input);
+                    foreach (Player p in Players)
+                    {
+                        p.hand = deck.dealCards(p.hand, numOfCards);
+                    }
+                    MenuSelection();
+                }
+                catch
+                {
+                    Console.WriteLine("That was an improper response.");
+                    tryAgain = true;
+                }
+            } while (tryAgain);
         }
 
         public void DealOneCard()
@@ -106,7 +128,7 @@ namespace DealingCards
             {
                 if(p.Name == nameGiven)
                 {         
-                    p.hand = deck.DealOneCard();
+                    p.hand = deck.DealOneCard(p.hand);
                 }
      
             }           

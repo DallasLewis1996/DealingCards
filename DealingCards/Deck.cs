@@ -12,9 +12,9 @@ namespace DealingCards
     {
         int numOfCard = 0;
         const int NUM_CARDS = 52;
-        int CardsWanted = 0;
         int cardsUsed = 0;
         private Card[] Cards { get; set; }
+        private List<Card> hand;
         
 
 
@@ -36,6 +36,7 @@ namespace DealingCards
         public  void Shuffle()
         {
             Random rand = new Random();
+            cardsUsed = 0;
             for(int i = 0; i < 52; i++)
             {
                 int r = i + (int)(rand.NextDouble() * (52 - i));
@@ -45,62 +46,34 @@ namespace DealingCards
             }
         }
 
-        public List<Card> dealCards() //NO ROUND ROBIN -- TRY A BETTER WAY TO SEE IF CARDSWANTED IS KNOWN
-        {                             //SEEMS TO BE DEALING THE SAME CARDS TO PLAYERS
-            
-            bool tryAgain = false;
-            List<Card> hand = new List<Card>();
-            string input = "";
-            if (CardsWanted == 0)
+        public List<Card> dealCards(List<Card> hand, int num) //NO ROUND ROBIN 
+        {                             
+            for (int i = 0; i < num; i++)
             {
-                Console.Write("How many cards would you like to be dealt?: ");
-                input = Console.ReadLine();
+                hand.Add(Cards[cardsUsed]);
+                cardsUsed++;
+                if(cardsUsed == 52)
+                {
+                    i = num;
+                }
             }
 
-            do
-            {
-                try
-                {
-                    if (CardsWanted == 0)
-                    {
-                        CardsWanted = int.Parse(input);
-                    }
-                    tryAgain = false;
-                    for (int i = 0; i < CardsWanted; i++)
-                    {
-                        hand.Add(Cards[i]);
-                        cardsUsed++;
-                        if(cardsUsed == 52)
-                        {
-                            i = CardsWanted;
-                        }
-                    }
-
-                }
-                catch(FormatException e)
-                {
-                    Console.WriteLine("I'm sorry. That was an improper response.");
-                    tryAgain = true;
-                }
-
-                return hand;
-
-            } while (tryAgain);
+             return hand;
         }
 
-        public List<Card> DealOneCard()
+        public List<Card> DealOneCard(List<Card> hand) 
         {
-            Card tempCard;
             if(cardsUsed == 52)
             {
                 Console.WriteLine("I'm sorry. There are no more cards left.");
             }
             else
             {
+                hand.Add(Cards[cardsUsed]);
                 cardsUsed++;
-
             }
-            return tempCard; //THIS NEEDS TO BE WORKED ON
+
+            return hand; 
         }
         public override string ToString()
         {
