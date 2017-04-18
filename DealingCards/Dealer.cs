@@ -99,7 +99,17 @@ namespace DealingCards
 
         public void DealOneCard()
         {
-            deck.DealOneCard();
+            Console.Write("Which player?: ");
+            string nameGiven = Console.ReadLine();
+
+            foreach(Player p in Players)
+            {
+                if(p.Name == nameGiven)
+                {         
+                    p.hand = deck.DealOneCard();
+                }
+     
+            }           
             MenuSelection();
         }
         
