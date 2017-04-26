@@ -4,7 +4,6 @@ c:\users\dallas\documents\visual studio 2017\Projects\DealingCards\DealingCards\
 c:\users\dallas\documents\visual studio 2017\Projects\DealingCards\DealingCards\obj\Debug\DealingCards.csprojResolveAssemblyReference.cache
 c:\users\dallas\documents\visual studio 2017\Projects\DealingCards\DealingCards\obj\Debug\DealingCards.exe
 c:\users\dallas\documents\visual studio 2017\Projects\DealingCards\DealingCards\obj\Debug\DealingCards.pdb
-C:\Users\Dallas\documents\visual studio 2017\Projects\DealingCards\DealingCards\bin\Debug\LewisD_CIO.dll
 C:\Users\Dallas Lewis\Documents\Visual Studio 2017\Projects\DealingCards\DealingCards\obj\Debug\DealingCards.csprojResolveAssemblyReference.cache
 C:\Users\Dallas Lewis\Documents\Visual Studio 2017\Projects\DealingCards\DealingCards\obj\Debug\DealingCards.exe
 C:\Users\Dallas Lewis\Documents\Visual Studio 2017\Projects\DealingCards\DealingCards\obj\Debug\DealingCards.pdb

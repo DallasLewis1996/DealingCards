@@ -8,10 +8,19 @@ namespace DealingCards
 {
     class Card
     {
+        private rankEnum r;
+        private suitEnum s;
+
         public Card(rankEnum r, suitEnum s)
         {
             this.Rank = r.ToString();
             this.Suite = s.ToString();
+        }
+
+        public Card(rankEnum r, suitEnum s)
+        {
+            this.r = r;
+            this.s = s;
         }
 
         public string Rank{ get; private set; }

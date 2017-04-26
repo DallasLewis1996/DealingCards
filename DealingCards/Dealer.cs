@@ -10,8 +10,8 @@ namespace DealingCards
     
     class Dealer
     {
-        List<Player> Players = new List<Player>();
-        Deck deck = new Deck();
+        private List<Player> Players = new List<Player>();
+        private Deck deck = new Deck();
 
 
         public void StartGame()
@@ -29,9 +29,22 @@ namespace DealingCards
                     numOfPlayers = int.Parse(response);
                     for(int i = 0; i < numOfPlayers; i++)
                     {
-                        Console.WriteLine("Player " + (i + 1) + ", What is your name?:");
-                        string name = Console.ReadLine();
-                        Players.Add(new Player(name));
+                        do
+                        {
+                            Console.WriteLine("Player " + (i + 1) + ", What is your name?:");
+                            string name = Console.ReadLine();
+
+                            if (name == "")
+                            {
+                                Console.WriteLine("I'm sorry. You must provide a valid name.");
+                                tryAgain = true;
+                            }
+                            else
+                            {
+                                Players.Add(new Player(name));
+                                tryAgain = false;
+                            }
+                        } while (tryAgain);
                     }
 
                     MenuSelection();
@@ -100,17 +113,27 @@ namespace DealingCards
             bool tryAgain = false;
             do
             {
-                    tryAgain = false;
                     Console.Write("How many cards would you like dealt?: ");
                     string input = Console.ReadLine();
                 try
                 {
-                    numOfCards = int.Parse(input);
-                    foreach (Player p in Players)
+                    int tempNum = int.Parse(input);
+                    
+                    if(numOfCards != tempNum)
                     {
-                        p.hand = deck.dealCards(p.hand, numOfCards);
+                        Console.WriteLine("I'm sorry there are not enough cards");
+                        MenuSelection();
                     }
-                    MenuSelection();
+                    else
+                    {
+                        numOfCards = tempNum;
+                        foreach (Player p in Players)
+                        {
+                            p.hand = deck.dealCards(p.hand, numOfCards);
+                        }
+                        MenuSelection();
+                    }
+
                 }
                 catch
                 {

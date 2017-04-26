@@ -9,7 +9,7 @@ namespace DealingCards
     class Player
     {
         public string Name { get; set; }
-        public List<Card> hand = new List<Card>();
+        private List<Card> hand = new List<Card>();
 
         public Player(string Name)
         {

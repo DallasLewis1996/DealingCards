@@ -6,19 +6,16 @@ using System.Threading.Tasks;
 
 namespace DealingCards
 {
-    enum rankEnum { Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King };
-    enum suitEnum { Hearts, Diamonds, Spades, Clubs }
     class Deck
     {
-        int numOfCard = 0;
-        const int NUM_CARDS = 52;
-        int cardsUsed = 0;
+        private enum rankEnum { Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King };
+        private enum suitEnum { Hearts, Diamonds, Spades, Clubs }
+
+        private int numOfCard = 0;
+        private const int NUM_CARDS = 52;
+        private int cardsUsed = 0;
         private Card[] Cards { get; set; }
         private List<Card> hand;
-        
-
-
-
 
         public void CreateDeck()
         {
@@ -33,6 +30,7 @@ namespace DealingCards
             }
             
         }
+
         public  void Shuffle()
         {
             Random rand = new Random();
