@@ -98,10 +98,11 @@ namespace DealingCards
         {
             int numOfCards = 0;
             bool tryAgain = false;
-            Console.Write("How many cards would you like dealt?: ");
-            string input = Console.ReadLine();
             do
             {
+                    tryAgain = false;
+                    Console.Write("How many cards would you like dealt?: ");
+                    string input = Console.ReadLine();
                 try
                 {
                     numOfCards = int.Parse(input);
