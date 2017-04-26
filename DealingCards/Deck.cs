@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DealingCards
 {
+        public enum rankEnum { Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King };
+        public enum suitEnum { Hearts, Diamonds, Spades, Clubs }
     class Deck
     {
-        private enum rankEnum { Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King };
-        private enum suitEnum { Hearts, Diamonds, Spades, Clubs }
 
         private int numOfCard = 0;
         private const int NUM_CARDS = 52;

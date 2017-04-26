@@ -34,7 +34,7 @@ namespace DealingCards
                             Console.WriteLine("Player " + (i + 1) + ", What is your name?:");
                             string name = Console.ReadLine();
 
-                            if (name == "")
+                            if (name.Trim() == "")
                             {
                                 Console.WriteLine("I'm sorry. You must provide a valid name.");
                                 tryAgain = true;
@@ -101,7 +101,7 @@ namespace DealingCards
         {
             foreach(Player p in Players)
             {
-                p.hand = null;
+                p.hand = new List<Card>();
             }
             deck.Shuffle();
             MenuSelection();

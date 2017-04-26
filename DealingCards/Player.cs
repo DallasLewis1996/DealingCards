@@ -9,7 +9,8 @@ namespace DealingCards
     class Player
     {
         public string Name { get; set; }
-        private List<Card> hand = new List<Card>();
+
+        public List<Card> hand { get; set; } = new List<Card>();
 
         public Player(string Name)
         {
@@ -22,7 +23,7 @@ namespace DealingCards
         {
             string CardsInHand = (Name + ", you have: ");
 
-            if(hand == null)
+            if(hand.Count == 0)
             {
                 CardsInHand += "no cards a the moment.";
             }
